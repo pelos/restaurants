@@ -1,0 +1,58 @@
+header
+    {
+    background-color: black;
+    color: white;
+    text-align: center;
+    /*padding: 0px;*/
+    }
+
+nav
+    {
+    line-height: 25px;
+    background-color: #eeeeee;
+    height: 300px;
+    width: 150px;
+    float: left;
+    padding: 4px;
+    }
+
+section
+    {
+    width: 350px;
+    float: left;
+    padding: 10px;
+    }
+
+footer
+    {
+    background-color: black;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding: 5px;
+    }
+
+#clock
+    {
+    float: right;
+    width: 25%;
+    color: #6495ff;
+    vertical-align: text-bottom;
+
+    }
+
+
+
+
+/*#menuu*/
+    /*{*/
+    /*float:left;*/
+    /*width: 150px;*/
+    /*background-color: gray;*/
+    /*}*/
+/*#section*/
+    /*{*/
+    /*float: left;*/
+    /*width: 150px;*/
+    /*background-color: blue ;*/
+    /*}*/

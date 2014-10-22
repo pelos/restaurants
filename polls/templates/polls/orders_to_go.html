@@ -1,0 +1,30 @@
+{% extends "initial_page.html" %}
+
+
+
+{% block body %}
+    <div>
+    {{ message }}
+    </div>
+
+
+    <div>
+    <table border="1" style="width:100%">
+    {% for i in lc %}
+        <tr>
+            <td> {{ i.person.name }} </td>
+            <td> {{ i.person.last_name }} </td>
+            <td> {{ i.dish.name}} </td>
+        </tr>
+
+
+    {% endfor %}
+    </table>
+    </div>
+
+
+{% endblock %}
+
+
+
+

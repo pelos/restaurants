@@ -1,0 +1,52 @@
+{% extends "initial_page.html" %}
+
+{% block body %}
+    {{ message }}
+    {#THIS LINE WILL GIVE ME THE NEW URL THAT NEEDS TO BE CATCH BY URLS PATTERNS#}
+
+{#    <fieldset>#}
+{#    <form action="/polls/vote/thanks/" method="post">#}
+{#    <label for="your_name"> Your name:</label>#}
+{#    <input id="your_name" type="text" name="your_name" value="">#}
+{##}
+{##}
+{#        <legend><strong>Restaurant:</strong> </legend>#}
+{#        <tr>#}
+{#        {% for i in all_restaurants %}#}
+{#            <td>#}
+{#            <input type="radio" name="restaurant" value={{ i.id }} > {{ i.name }}<br>#}
+{#            </td>#}
+{#        {% endfor %}#}
+{##}
+{#        </tr>#}
+{#    <input type="submit" value="Vote">#}
+{#    </form>#}
+{#    </fieldset>#}
+
+{#    <form action="/polls/vote/thanks/" method="post">#}
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Submit" />
+{#        <button type="submit" class="btn btn-default">Submit</button>#}
+
+    </form>
+
+
+
+{% endblock %}
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head lang="en">#}
+{#    <meta charset="UTF-8">#}
+{#    <title></title>#}
+{#</head>#}
+{#<body>#}
+{#    <p>template loaded</p>#}
+{##}
+{#</body>#}
+{#</html>#}

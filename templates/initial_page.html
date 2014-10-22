@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet"  type="text/css" href="{% static 'my_style.css' %}"/>
+        <link rel="stylesheet" type= "text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}"/>
+
+{#        how to make a clock#}
+        <script>
+        function startTime()
+            {
+            var today=new Date();
+            var h=today.getHours();
+            var m=today.getMinutes();
+            var s=today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML = h+":"+m+":"+s;
+            var t = setTimeout(function(){startTime()},500);
+            }
+
+        function checkTime(i) {
+            if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+        </script>
+    </head>
+
+    <body onload="startTime()">
+        <header>
+
+
+            <div class="row">
+                <div style="background-color: " class="col-xs-6">
+                    <h1>Lunch Box to Go</h1>
+
+                </div>
+
+                <div style="background-color: ;" class="col-xs-6">
+                    <div id="clock"> <p>Time: </p> </div>
+                    <div style="position: absolute; bottom: -230px">
+                        <img src="{% static 'images/lunch_box.png' %}" style="width:180px;height:180px">
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+
+
+
+
+
+
+
+
+        <nav>
+            <div id="menu" >
+                <ul>
+                    <li><a href="/"> Main</a></li>
+                    <li><a href="/polls/vote"> Vote</a></li>
+                    <li><a href="/polls/order"> Order</a></li>
+                    <li><a href="/polls/orders_to_go"> Orders to go</a></li>
+                    <li><a href="/polls/statistics"> statistics</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section>
+            <div id="section">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </section>
+
+        <footer>
+            Copyright © DK Services
+        </footer>
+
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    </body>
+</html>
