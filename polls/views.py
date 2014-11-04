@@ -1,4 +1,4 @@
-#import django stuff
+#import django libraries
 import django
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
@@ -18,9 +18,10 @@ import polls.forms_DK
 #Global variables
 global cut_hour
 now = datetime.datetime.now()
-cut_hour = now.replace(hour=16, minute=0, second=0, microsecond=0)
+#cut_hour = now.replace(hour=16, minute=0, second=0, microsecond=0)
 #for testing
-#cut_hour = now.replace(hour=22, minute=0, second=0, microsecond=0)
+cut_hour = now.replace(hour=01, minute=0, second=0, microsecond=0)
+
 cut_hour_12 = cut_hour.strftime("%I:%M:%p")
 
 
@@ -134,21 +135,23 @@ def order(request):
     if datetime.datetime.now() > cut_hour:
         i = datetime.datetime.now()
         date = str("%s-%s-%s") % (i.year, i.month, i.day)
-        print -1
         try:
-            print 0000
             #Choice.objects.filter(date_vote=date)
-            the_max = Choice.objects.filter(date_vote=date)
-            # print 1
-            # the_max = list(the_max)
-            # print 2
-            # d = {x: the_max(x) for x in the_max}
-            # print d
-            # print 3
-            # chosen_restaurant = max(d, key=d.get)
-            # print 4
+            q_date = Choice.objects.filter(date_vote=date)
             #todo max is not working properly!!! aggregate function should be implemented here
-            chosen_restaurant = max(the_max)
+            chosen_restaurant = max(q_date)
+
+            #this is how we can get the max
+            #but we need to return a choice object
+
+            # dir = {}
+            # for j in q_date:
+            #     try:
+            #         dir[j.restaurant_vote] = dir[j.restaurant_vote]+1
+            #     except:
+            #         dir[j.restaurant_vote] = 1
+            # chosen_restaurant = max(dir)
+            # chosen_restaurant = Restaurant.objects.get(name=chosen_restaurant)
 
         except:
             message = "no one voted, talk to your PA "
@@ -202,20 +205,6 @@ def orders_to_go(request):
         return render(request, "orders_to_go.html", d)
     except:
         return render(request, "thanks.html", {"message": "no orders to process yet"})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def statistics(request):
