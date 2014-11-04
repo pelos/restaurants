@@ -18,10 +18,10 @@ import polls.forms_DK
 #Global variables
 global cut_hour
 now = datetime.datetime.now()
-#cut_hour = now.replace(hour=16, minute=0, second=0, microsecond=0)
+#Cut hour is before to vote, and after to select dishes.
+cut_hour = now.replace(hour=16, minute=0, second=0, microsecond=0)
 #for testing
-cut_hour = now.replace(hour=01, minute=0, second=0, microsecond=0)
-
+#cut_hour = now.replace(hour=01, minute=0, second=0, microsecond=0)
 cut_hour_12 = cut_hour.strftime("%I:%M:%p")
 
 
