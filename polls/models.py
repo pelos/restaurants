@@ -13,7 +13,7 @@ class Restaurant(models.Model):
 
 
 class Dish(models.Model):
-    restaurant = models.ForeignKey(Restaurant)
+    restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.TextField()
 
@@ -39,14 +39,14 @@ class Person(models.Model):
 
 
 class Choice(models.Model):
-    person = models.ForeignKey(Person)
-    restaurant_vote = models.ForeignKey(Restaurant, related_name="res_vote")
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    restaurant_vote = models.ForeignKey(Restaurant, related_name="res_vote", on_delete=models.CASCADE)
 
     date_vote = models.DateField(null=True, blank=True)
     time_vote = models.TimeField(null=True, blank=True)
 
-    restaurant_winner = models.ForeignKey(Restaurant, null=True, blank=True, related_name="res_winner")
-    dish = models.ForeignKey(Dish, null=True, blank=True)
+    restaurant_winner = models.ForeignKey(Restaurant, null=True, blank=True, related_name="res_winner", on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, null=True, blank=True, on_delete=models.CASCADE)
     time_dish = models.TimeField(null=True, blank=True)
     def __str__(self):
         return str(self.person.name)+" "+str(self.person.last_name) + " choose " + str(self.restaurant_vote)

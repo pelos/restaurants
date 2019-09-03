@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
+from django.conf.urls import include, url
 
 from polls import views
 
-urlpatterns = patterns('',
-
+urlpatterns = [
     #url(r'^main_site/$', views.main_site),
     url(r'^vote/$', views.vote),
     url(r'^statistics/$', views.statistics),
@@ -19,5 +18,4 @@ urlpatterns = patterns('',
 
     #testing the info of the restaurant
     #url(r'^vote/Restaurant_Info/4/$', views.restaurant_menu),
-
-)
+]

@@ -21,7 +21,7 @@ now = datetime.datetime.now()
 #Cut hour is before to vote, and after to select dishes.
 cut_hour = now.replace(hour=16, minute=0, second=0, microsecond=0)
 #for testing
-#cut_hour = now.replace(hour=01, minute=0, second=0, microsecond=0)
+#cut_hour = now.replace(hour=01, minrunute=0, second=0, microsecond=0)
 cut_hour_12 = cut_hour.strftime("%I:%M:%p")
 
 
@@ -59,14 +59,14 @@ def vote(request):
 
             #Checking if its before 4pm cut_hour
             if datetime.datetime.now() < cut_hour:
-                print "you can still vote"
+                print ("you can still vote")
                 #quering to see if the person voted
                 date_query = Choice.objects.filter(date_vote=dater)
                 voted = False
                 for i in date_query:
                     if i.person_id == checking_email.id:
                         voted = True
-                        print "you voted"
+                        print("you voted")
 
                 # action if he voted or not
                 if voted is False:

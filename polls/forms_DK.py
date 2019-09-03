@@ -25,6 +25,7 @@ class NameForm(forms.Form):
 class FormRegistration(forms.ModelForm):
     class Meta:
         model = Person
+        fields = "__all__"
 
 
 class FormDishes(forms.Form):

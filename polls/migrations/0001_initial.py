@@ -59,31 +59,31 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='dish',
             name='restaurant',
-            field=models.ForeignKey(to='polls.Restaurant'),
+            field=models.ForeignKey(to='polls.Restaurant', on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='choice',
             name='dish',
-            field=models.ForeignKey(blank=True, to='polls.Dish', null=True),
+            field=models.ForeignKey(blank=True, to='polls.Dish', null=True, on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='choice',
             name='person',
-            field=models.ForeignKey(to='polls.Person'),
+            field=models.ForeignKey(to='polls.Person', on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='choice',
             name='rest_winner',
-            field=models.ForeignKey(related_name=b'res_winner', blank=True, to='polls.Restaurant', null=True),
+            field=models.ForeignKey(related_name=b'res_winner', blank=True, to='polls.Restaurant', null=True, on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='choice',
             name='restaurant_vote',
-            field=models.ForeignKey(related_name=b'res_vote', to='polls.Restaurant'),
+            field=models.ForeignKey(related_name=b'res_vote', to='polls.Restaurant', on_delete=models.CASCADE),
             preserve_default=True,
         ),
     ]
